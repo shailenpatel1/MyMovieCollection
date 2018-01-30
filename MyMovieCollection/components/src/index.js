@@ -1,19 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Header from './header';
 import './index.css';
-import * as FontAwesome from 'react-icons/lib/fa';
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter, Route, browserHistory } from 'react-router-dom';
 
-// ReactDOM.render(<App />, document.getElementById('root'));
-// registerServiceWorker();
 <div id="root"></div>
-class Header extends React.Component {
+class App extends React.Component {
     render() {
-        return (<h1> ToDo List <FontAwesome.FaBars/>? </h1>);
+        return ( 
+        	<BrowserRouter>
+        	<div class ="paths"> 
+        	<Route path={"/"} component={Header}/>
+        	<Route path={"/movies"} component={Header}/>
+        	</div>
+        	</BrowserRouter>
+        );
     }
 }
+
 ReactDOM.render(
-    <Header />,
+    <App />,
     document.getElementById('root')
 );

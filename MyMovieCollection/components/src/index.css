@@ -2,4 +2,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  text-align: center;
+  font-size: 32px;
+}
+
+.button {
+	height: 100px;
+	width: 200px;
+}
+
+.button-label {
+	font-size: 25px;
 }
