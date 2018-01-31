@@ -6,12 +6,12 @@ body {
   font-size: 32px;
 }
 
-.button {
+.btn-primary {
 	height: 100px;
 	width: 200px;
 }
 
-.b {
+.button {
 	text-align: center;
 }
 
