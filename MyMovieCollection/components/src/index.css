@@ -11,6 +11,19 @@ body {
 	width: 200px;
 }
 
+.b {
+	text-align: center;
+}
+
 .button-label {
 	font-size: 25px;
+}
+
+.title {
+	font-size: 60px;
+	text-align: center;
+}
+
+.movie-list { 
+	text-align: center;
 }
