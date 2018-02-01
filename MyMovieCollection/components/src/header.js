@@ -51,11 +51,11 @@ render() {
     </div>
 
     <div class="add-movies button">
-     <Link to="/form">
-      <button type="button" class="btn btn-outline-primary">
+      <button type="button" class="btn btn-outline-primary"
+        onClick={this.toggleForm.bind(this)}>
         <h1 class="add-movies-button label">Add a Movie </h1>
       </button>
-     </Link>
+      {!this.state.formHidden && <MovieForm/>}
     </div>
 
   </div>);

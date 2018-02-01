@@ -4,8 +4,17 @@ import './index.css';
 import { FormGroup } from 'react-bootstrap';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
+import Header from './header';
 
 class MovieForm extends React.Component {
+
+addMovie() {
+  if(document.getElementById("title") != null) {
+    var title = document.getElementById("title").value;
+    localStorage.setItem(title, title);
+  }
+}
+
 	render() {
   	return (
     <form>
@@ -32,14 +41,22 @@ class MovieForm extends React.Component {
 
       <div>
       <Link to="/">
-  		  <button type="submit" class="btn btn-primary">Submit</button>
+  		  <button type="submit" class="btn btn-primary" onClick={this.addMovie()}>Submit</button>
+        
       </Link>
       </div>
   	</form> ); 
 	}
+
 }
 
- 
+// function addMovie() {
+//   if(document.getElementById("title") != null) {
+//     var title = document.getElementById("title").value;
+//     localStorage.setItem("sg", "rs");
+//   }
+//   return (<Header/>);
+// }
 
 // ReactDOM.render(
 //     <MovieForm />,
@@ -47,3 +64,4 @@ class MovieForm extends React.Component {
 // );
 
 export default MovieForm;
+

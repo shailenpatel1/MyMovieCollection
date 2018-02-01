@@ -5,20 +5,10 @@ import { FormGroup } from 'react-bootstrap';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
 class MoviesList extends React.Component {
-
 	render() {
-
-		if(isStorageEmpty())
-			return ( <h1 class="movie-list"> No movies to display </h1> );
-		else { 
-			
-			for(var i = 0; i < localStorage.length; i++) {
-				localStorage.getItem(localStorage.key(i));
-			}
-		}
-
+	//localStorage.clear();
+		return showMovies();
 	}
-
 }
 
 function isStorageEmpty() { 
@@ -29,19 +19,21 @@ function isStorageEmpty() {
 
 function showMovies() {
   if(isStorageEmpty()) 
-    return (<div>No movies to display</div>);
+    return (<h1 class="movie-list">No movies to display</h1>);
     else { 
-      
+      var buffer = [];
       for(var i = 0; i < localStorage.length; i++) {
-        localStorage.getItem(localStorage.key(i));
+        var movie = JSON.stringify(localStorage.getItem(localStorage.key(i)));
+        buffer.push(<ul >{movie}</ul>);
       }
+      return buffer;
     }
 }
 
-ReactDOM.render(
-    <MoviesList />,
-    document.getElementById('root')
-);
+// ReactDOM.render(
+//     <MoviesList />,
+//     document.getElementById('root')
+// );
 
 export default MoviesList;
 

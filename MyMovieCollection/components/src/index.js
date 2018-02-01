@@ -12,7 +12,6 @@ class App extends React.Component {
         	<BrowserRouter>
         		<div class ="paths"> 
         			<Route path={"/"} component={Header}/>
-        			<Route path={"/form"} component={MovieForm}/>
         		</div>
         	</BrowserRouter>
         );
