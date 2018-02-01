@@ -10,14 +10,16 @@ class MovieForm extends React.Component {
 
 addMovie() {
   if(document.getElementById("title") != null) {
-    var title = document.getElementById("title").value;
-    localStorage.setItem(title, title);
+    var title = document.getElementById("title").value.trim();
+    if(title.length != 0)
+      localStorage.setItem(title, title);
+    document.getElementById("add-movie-form").reset();
   }
 }
 
 	render() {
   	return (
-    <form>
+    <form id="add-movie-form">
 		  <div class="form-group">
 		    <label>Movie Title</label>
     	  <input type="text" class="form-control" id="title" placeholder="enter title"/>
@@ -41,8 +43,7 @@ addMovie() {
 
       <div>
       <Link to="/">
-  		  <button type="submit" class="btn btn-primary" onClick={this.addMovie()}>Submit</button>
-        
+  		  <button type="submit" class="btn btn-primary" onClick={this.addMovie()}>Submit</button>   
       </Link>
       </div>
   	</form> ); 

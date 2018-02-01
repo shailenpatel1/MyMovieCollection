@@ -6,6 +6,8 @@ body {
   font-size: 32px;
 }
 
+.movies
+
 .btn-primary {
 	height: 100px;
 	width: 200px;
@@ -24,7 +26,11 @@ body {
 	text-align: center;
 }
 
-.movie-list { 
+.no-movies-msg {
 	text-align: center;
+}
 
+.movies { 
+	text-align: center;
+	font-size: 24px;
 }

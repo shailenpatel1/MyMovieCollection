@@ -8,6 +8,7 @@ import { Button } from 'react-bootstrap';
 import { FormGroup } from 'react-bootstrap';
 import MovieForm from './movieform';
 import { Link } from 'react-router-dom';
+import MovieSearch from './moviesearch';
 
 <div id="root"></div>
 class Header extends React.Component {
@@ -16,8 +17,10 @@ class Header extends React.Component {
     super();
     this.state = {moviesHidden: true};
     this.state = {formHidden: true};
+    this.state = {searchHidden: true};
     this.toggleMovies = this.toggleMovies.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
+    this.toggleSearch = this.toggleSearch.bind(this);
   }
 
   toggleMovies() {
@@ -29,6 +32,12 @@ class Header extends React.Component {
   toggleForm() {
     this.setState({
       formHidden: !this.state.formHidden
+    })
+  }
+
+  toggleSearch() {
+    this.setState({
+      searchHidden: !this.state.searchHidden
     })
   }
 
@@ -45,9 +54,11 @@ render() {
     </div>
 
     <div class="search-movies button">
-      <button type="button" class="btn btn-outline-primary">
+      <button type="button" class="btn btn-outline-primary"
+        onClick={this.toggleSearch.bind(this)}>
         <h1 class="search-movies-button label">Search Movies </h1>
       </button>
+      {!this.state.searchHidden && <MovieSearch/>}
     </div>
 
     <div class="add-movies button">
@@ -55,25 +66,12 @@ render() {
         onClick={this.toggleForm.bind(this)}>
         <h1 class="add-movies-button label">Add a Movie </h1>
       </button>
-      {!this.state.formHidden && <MovieForm/>}
+      {this.state.formHidden && <MovieForm/>}
     </div>
 
   </div>);
   }
 }
-
-var showMoviesButton = ( 
-  <div class = "b">
-  <button type="button" class="btn btn-outline-primary">
-    <h1 class = "button-label" > My Movies </h1>
-  </button> 
-  </div>
-); 
-
-// ReactDOM.render(
-//     <Header />,
-//     document.getElementById('root')
-// );
 
 export default Header;
 
