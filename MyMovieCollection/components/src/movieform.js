@@ -11,8 +11,16 @@ class MovieForm extends React.Component {
 addMovie() {
   if(document.getElementById("title") != null) {
     var title = document.getElementById("title").value.trim();
+    //year genre actor rating 
+    var year = document.getElementById("year").value.trim();
+    var genre = document.getElementById("genre").value.trim();
+    var actor = document.getElementById("actor").value.trim();
+    var rating = document.getElementById("rating").value.trim();
+    var movieDetails = "year: " + year + " genre: " + genre + 
+                        " actor: " + actor + " rating: " + rating;
+
     if(title.length != 0)
-      localStorage.setItem(title, title);
+      localStorage.setItem(title, movieDetails); // 2nd parameter needs to be genre etc.
     document.getElementById("add-movie-form").reset();
   }
 }
@@ -50,19 +58,6 @@ addMovie() {
 	}
 
 }
-
-// function addMovie() {
-//   if(document.getElementById("title") != null) {
-//     var title = document.getElementById("title").value;
-//     localStorage.setItem("sg", "rs");
-//   }
-//   return (<Header/>);
-// }
-
-// ReactDOM.render(
-//     <MovieForm />,
-//     document.getElementById('root')
-// );
 
 export default MovieForm;
 

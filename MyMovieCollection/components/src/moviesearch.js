@@ -7,13 +7,20 @@ import {Typeahead} from 'react-bootstrap-typeahead';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 class MovieSearch extends React.Component {
+	constructor() {
+		super()
+		this.state = {value: ''}
+	}
+
 	render() {
-		return (
-		<Typeahead onChange={(selected) => {
-    	// Handle selections...
+		var movies = Object.keys(localStorage);
+		return ( <div>
+		<Typeahead placeholder="search movie" onChange={(selected) => {
+    		var movieDetails = localStorage.getItem(selected);
+    		this.setState({value: movieDetails});
   		}}
-  		options={[ /* Array of objects or strings */ ]}
-		/>);
+  		options={movies}
+		/> <h3>{this.state.value}</h3> </div>);
 	}
 }
 

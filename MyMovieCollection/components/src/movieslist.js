@@ -6,7 +6,7 @@ import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
 class MoviesList extends React.Component {
 	render() {
-	//localStorage.clear();
+	localStorage.clear();
 		return showMovies(); 
 	}
 }
@@ -23,20 +23,12 @@ function showMovies() {
     else { 
       var buffer = [];
       for(var i = 0; i < localStorage.length; i++) {
-        var movie = JSON.stringify(localStorage.getItem(localStorage.key(i)));
+        //var movie = JSON.stringify(localStorage.getItem(localStorage.key(i)));
+        var movie = JSON.stringify(localStorage.key(i));
         buffer.push(<ul class="movies">{movie}</ul>);
       }
       return buffer;
     }
 }
 
-// ReactDOM.render(
-//     <MoviesList />,
-//     document.getElementById('root')
-// );
-
 export default MoviesList;
-
-
-
-
