@@ -6,9 +6,11 @@ import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
 import Header from './header';
 import Ratings from 'react-ratings';
+import Movie from './movie';
 
 var genreGlobal = "";
 var ratingGlobal = "";
+
 class MovieForm extends React.Component {
 
 setGenre(g) {
@@ -30,9 +32,10 @@ addMovie() {
       var rating = ratingGlobal;
     var movieDetails = "year: " + year + "   genre: "  + genre +
                         "   actor: " + actor + "   rating: " + rating;
+    var movie = {movieTitle: title, year: year, genre: genre, actor: actor, rating: rating};               
 
     if(title.length != 0)
-      localStorage.setItem(title, movieDetails); // 2nd parameter needs to be genre etc.
+      localStorage.setItem(title, JSON.stringify(movie)); 
     document.getElementById("add-movie-form").reset();
   }
 }
@@ -59,7 +62,6 @@ addMovie() {
   <button type="button" value="Horror" onClick={this.setGenre.bind(this)} class="btn btn-secondary">Horror</button>
   <button type="button" value="Sci-Fi" onClick={this.setGenre.bind(this)} class="btn btn-secondary">Sci-Fi</button>
   </div>
-  <h3 id="selected-genre">your genre is {genreGlobal}</h3>
 
       <div class="form-group">
        <label>Actor</label>
@@ -77,7 +79,7 @@ addMovie() {
 
       <div>
       <Link to="/">
-  		  <button type="submit" class="btn btn-primary" onClick={this.addMovie}>Submit</button>   
+  		  <button type="submit" class="btn btn-secondary" onClick={this.addMovie}>Submit</button>   
       </Link>
       </div>
 
