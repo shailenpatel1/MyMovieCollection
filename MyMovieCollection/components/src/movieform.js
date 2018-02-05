@@ -5,7 +5,6 @@ import { FormGroup } from 'react-bootstrap';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
 import Header from './header';
-import Ratings from 'react-ratings';
 
 var genreGlobal = "";
 var ratingGlobal = "";
