@@ -43,7 +43,14 @@ class Header extends React.Component {
 
 render() {
   return (
-  <div> <h1> <div class="title">My Movie Collection</div>  </h1>
+  <div> 
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">My Movie Collection</h1>
+    <p class="lead">Click below to view or add to the movie collection, or search to list titles by category.</p>
+  </div>
+</div>
     
     <div class="my-movies button">
       <button type="button" class="btn btn-outline-primary" 
