@@ -8,20 +8,15 @@ import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 var years = [];
 var genres = [];
+var titles = [];
 var actors = [];
-var ratings = [1, 2, 3, 4, 5];
-var auxArray = [];
-var criteria = "title";
+var ratings = [];
 
 class MovieSearch extends React.Component {
 	constructor() {
 		super()
 		this.state = {value: ''}
 		this.state = {criteria: ''}
-	}
-
-	setCriteria(c) {
-		criteria = c.target.value;
 	}
 
 	searchByGenre() {
@@ -40,9 +35,42 @@ class MovieSearch extends React.Component {
 		}
 	}
 
-	listMovies(selected) {
+	searchByTitle() {
+		for(var i=0; i<localStorage.length; i++){
+			var currMovie = JSON.parse(localStorage.getItem(localStorage.key(i)));
+			if(!titles.includes(localStorage.key(i)))
+				titles.push(localStorage.key(i));
+		}
+	}
+
+	searchByActor() {
+		for(var i=0; i<localStorage.length; i++){
+			var currMovie = JSON.parse(localStorage.getItem(localStorage.key(i)));
+			if(!actors.includes(currMovie.actor))
+				actors.push(currMovie.actor);
+		}
+	}
+
+	searchByRatings() {
+		for(var i=0; i<localStorage.length; i++){
+			var currMovie = JSON.parse(localStorage.getItem(localStorage.key(i)));
+			if(!ratings.includes(currMovie.rating))
+				ratings.push(currMovie.rating);
+		}
+	}
+
+	listMovieGenres(selected) {
 		var resultSet = [];
-		var c = criteria;
+		for(var i=0; i<localStorage.length; i++) {
+			var currMovie = localStorage.getItem(localStorage.key(i));		
+			if(JSON.parse(currMovie).genre == selected)
+				resultSet.push(currMovie);
+		}
+		return resultSet;
+	}
+
+	listMovieYears(selected) {
+		var resultSet = [];
 		for(var i=0; i<localStorage.length; i++) {
 			var currMovie = localStorage.getItem(localStorage.key(i));		
 			if(JSON.parse(currMovie).year == selected)
@@ -51,27 +79,86 @@ class MovieSearch extends React.Component {
 		return resultSet;
 	}
 
+	listMovieTitles(selected) {
+		var resultSet = [];
+		for(var i=0; i<localStorage.length; i++) {
+			var currMovie = localStorage.getItem(localStorage.key(i));		
+			if(localStorage.key(i) == selected)
+				resultSet.push(currMovie);
+		}
+		return resultSet;
+	}
+
+	listMovieActors(selected) {
+		var resultSet = [];
+		for(var i=0; i<localStorage.length; i++) {
+			var currMovie = localStorage.getItem(localStorage.key(i));		
+			if(JSON.parse(currMovie).actor == selected)
+				resultSet.push(currMovie);
+		}
+		return resultSet;
+	}
+
+	listMovieRatings(selected) {
+		var resultSet = [];
+		for(var i=0; i<localStorage.length; i++) {
+			var currMovie = localStorage.getItem(localStorage.key(i));		
+			if(JSON.parse(currMovie).rating == selected)
+				resultSet.push(currMovie);
+		}
+		return resultSet;
+	}
+
 	render() {
 		var movies = Object.keys(localStorage);
+		this.searchByYear();
+		this.searchByGenre();
+		this.searchByTitle();
+		this.searchByActor();
+		this.searchByRatings();
 		return (
-		<div>
-		<div class="btn-group" type="button" role="group" aria-label="movie-genres">
-  		<h3>Select a search filter:  </h3>
-  		<button type="button" value="title" onClick={this.searchByYear} class="btn btn-secondary">Search by title</button>
-  		<button type="button" value="year" onClick={this.searchByYear} class="btn btn-secondary">Search by year</button>
-  		<button type="button" value="genre" onClick={this.searchByYear} class="btn btn-secondary">Search by genre</button>
-  		<button type="button" value="actor" onClick={this.searchByYear} class="btn btn-secondary">Search by actor</button>
- 		<button type="button" value="rating" onClick={this.searchByYear} class="btn btn-secondary">Search by rating</button>
-  		</div>
 
-  		<Typeahead id="search-bar" placeholder="search by movie year" onChange={(selected) => {
-    			var movieDetails = this.listMovies(selected);
+  		<div>
+
+  			<Typeahead id="search-bar" placeholder="search movies by year" onChange={(selected) => {
+    			var movieDetails = this.listMovieYears(selected); 
     			this.setState({value: movieDetails});
   			}}
   			options={years}
-			/> <h3>{this.state.value}</h3>
+			/> 
+
+			<Typeahead id="search-bar" placeholder="search movies by genre" onChange={(selected) => {
+    			var movieDetails = this.listMovieGenres(selected); 
+    			this.setState({value: movieDetails});
+  			}}
+  			options={genres}
+			/> 
+
+			<Typeahead id="search-bar" placeholder="search movies by title" onChange={(selected) => {
+    			var movieDetails = this.listMovieTitles(selected); 
+    			this.setState({value: movieDetails});
+  			}}
+  			options={titles}
+			/> 
+
+			<Typeahead id="search-bar" placeholder="search movies by actor" onChange={(selected) => {
+    			var movieDetails = this.listMovieActors(selected); 
+    			this.setState({value: movieDetails});
+  			}}
+  			options={actors}
+			/> 
+
+			<Typeahead id="search-bar" placeholder="search movies by ratings" onChange={(selected) => {
+    			var movieDetails = this.listMovieRatings(selected); 
+    			this.setState({value: movieDetails});
+  			}}
+  			options={ratings}
+			/> 
+
+			<h3>{this.state.value}</h3>
 
   		</div>
+
 		);
 	}
 

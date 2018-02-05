@@ -6,7 +6,6 @@ import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
 import Header from './header';
 import Ratings from 'react-ratings';
-import Movie from './movie';
 
 var genreGlobal = "";
 var ratingGlobal = "";
