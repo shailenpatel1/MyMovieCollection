@@ -10,6 +10,9 @@ import MovieForm from './movieform';
 import { Link } from 'react-router-dom';
 import MovieSearch from './moviesearch';
 
+//This model of the app renders the home page, button options (per specs) and 
+//controls the display and hide functions for each of the buttons 
+
 <div id="root"></div>
 class Header extends React.Component {
 

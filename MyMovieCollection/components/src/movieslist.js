@@ -4,6 +4,10 @@ import './index.css';
 import { FormGroup } from 'react-bootstrap';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
+//This class renders the my movies tab.  It shows a complete list of all movies 
+//Beside each movie is a delete button to allow the user to delete the movie from the list 
+//NOTE: must rerender page for movie list to update after a delete OR click and reclick movie list button 
+
 class MoviesList extends React.Component {
 	render() {
 	//localStorage.clear();

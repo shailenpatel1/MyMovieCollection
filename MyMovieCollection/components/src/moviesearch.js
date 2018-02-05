@@ -12,6 +12,9 @@ var titles = [];
 var actors = [];
 var ratings = [];
 
+//This class controls the search function of the app 
+//It renders each typeahead search bar (per field) and lists all movies compliant with the constraint
+
 class MovieSearch extends React.Component {
 	constructor() {
 		super()

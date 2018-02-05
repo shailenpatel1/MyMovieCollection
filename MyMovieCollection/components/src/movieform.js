@@ -10,6 +10,9 @@ import Ratings from 'react-ratings';
 var genreGlobal = "";
 var ratingGlobal = "";
 
+//This class renders the movie form for when a user needs to add a movie to the list
+//Fields are per specs: title, actor, genre, year, rating  
+
 class MovieForm extends React.Component {
 
 setGenre(g) {

@@ -5,6 +5,8 @@ import './index.css';
 import MovieForm from './movieform';
 import { BrowserRouter, Route, browserHistory } from 'react-router-dom';
 
+//This class kicks off the app 
+
 <div id="root"></div>
 class App extends React.Component {
     render() {
