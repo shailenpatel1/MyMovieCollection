@@ -20,11 +20,15 @@
 ## BUILD AND RUN INSTRUCTIONS: 
 
 $ npm install react react-dom
+
 $ npm install --save react-router-dom
+
 $ npm install bootstrap 
+
 $ npm install --save react-bootstrap-typeahead
 
 $ cd MyMovieCollection/components/src
+
 $ npm start
 
 ### Bonus: 
